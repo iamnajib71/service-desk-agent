@@ -1,0 +1,43 @@
+{
+  "run": {
+    "id": "eval-20261009T145821Z-18",
+    "ticket": "I cannot log in. Unlock my account please. No username or identity verification provided.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Unknown user, unable to verify identity.",
+    "started": "2026-10-09T15:05:04.836026+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 361,
+      "run": "eval-20261009T145821Z-18",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"I cannot log in. Unlock my account please. No username or identity verification provided.\"}",
+      "at": "2026-10-09T15:05:04.997227+00:00"
+    },
+    {
+      "seq": 362,
+      "run": "eval-20261009T145821Z-18",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T15:05:05.009837+00:00"
+    },
+    {
+      "seq": 363,
+      "run": "eval-20261009T145821Z-18",
+      "event": "reflection",
+      "data": "{\"kind\":\"escalate\",\"plan\":\"Verify identity\",\"reflection\":\"No username or identity verification provided\",\"summary\":\"Unknown user, unable to verify identity.\"}",
+      "at": "2026-10-09T15:05:05.842180+00:00"
+    },
+    {
+      "seq": 364,
+      "run": "eval-20261009T145821Z-18",
+      "event": "escalated",
+      "data": "{\"summary\":\"Unknown user, unable to verify identity.\"}",
+      "at": "2026-10-09T15:05:05.870748+00:00"
+    }
+  ]
+}

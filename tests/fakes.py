@@ -50,4 +50,3 @@ class FakeTools:
             current["count"] += 1
             self.file.write_text(json.dumps(current))
         return {"verified": True}
-

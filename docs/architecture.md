@@ -19,4 +19,3 @@ An OS file lock prevents two processes executing the same ticket run simultaneou
 The LLM's closure is a claim, not a ground-truth test. No-observation closures are blocked; the evaluation harness separately verifies actual service state, original print-job IPP completion/cancellation and cleanup. Model summaries can be inaccurate even when a tool operation succeeds. The repository exposes those summaries in the raw evidence.
 
 Sources: [homelab tests and runbook](https://github.com/iamnajib71/it-support-homelab), [Ollama structured outputs](https://ollama.com/blog/structured-outputs), [Samba administration](https://www.samba.org/samba/docs/current/man-html/samba-tool.8.html), [wg-easy v14 server](https://github.com/wg-easy/wg-easy/blob/v14/src/lib/Server.js), [CUPS command documentation](https://www.cups.org/doc/man-lpstat.html).
-

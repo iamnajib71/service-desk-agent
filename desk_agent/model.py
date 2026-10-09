@@ -313,4 +313,3 @@ class Memory:
         with self.store.db:
             self.store.db.execute("INSERT OR REPLACE INTO tickets VALUES(?,?,?,?,?)",
                                   (run, ticket, summary, encoded(vector), self.model.config.embed_model))
-

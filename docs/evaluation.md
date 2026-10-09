@@ -17,4 +17,3 @@ The model receives the ticket and actual observations, never the expected-check 
 The 20 cases exercise six domains and several variants, but they are a small scripted suite on one host. Explicit account/device names and approved access are usually supplied. This is not a general benchmark or evidence of production readiness. Earlier pilot results remain available to show actual failures while the prompt and schema design were being improved.
 
 The demo additionally performs a real process death using `os._exit(86)` after a successful Samba group write and before the SQLite completion checkpoint. It asserts exactly one `addgroup bob finance` execution in the command audit, resumes from current group state, verifies authenticated Finance access, and restores bob's original membership. The unit suite independently tests the same interruption boundary in a subprocess using a durable fake side-effect counter.
-

@@ -60,4 +60,3 @@ TEXT = {"type": "string", "minLength": 1, "maxLength": 2000}
 USER = {"type": "string", "pattern": r"(?:alice|bob|carol|sdtest_[a-z0-9_]{1,40})"}
 TEMP_USER = {"type": "string", "pattern": r"sdtest_[a-z0-9_]{1,40}"}
 PEER = {"type": "string", "pattern": r"agent-[a-z0-9-]{1,48}"}
-

@@ -1,0 +1,204 @@
+{
+  "run": {
+    "id": "eval-20261009T145821Z-04",
+    "ticket": "Manager-approved Finance starter bob needs GG-Finance AD membership. Inspect groups, add approved membership, verify. This ticket is AD only.",
+    "mode": "live",
+    "status": "resolved",
+    "budget": 12,
+    "memory": "[]",
+    "final": "bob is a member of GG-Finance.",
+    "started": "2026-10-09T14:59:17.344630+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T145821Z-04",
+      "n": 1,
+      "key": "06495fa72586e424eb4df3ef2fc81ab9582dc0fb0505d565de786669b6a945f2",
+      "decision": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect current AD group membership\",\"reflection\":\"Verify current membership state\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\",\"verified\":true}"
+    },
+    {
+      "run": "eval-20261009T145821Z-04",
+      "n": 2,
+      "key": "50b2ff30bb5226bdf262bfebb2e7780993883653de23b8a22f1f337b2d379dc8",
+      "decision": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify bob's membership in GG-Finance\",\"reflection\":\"Confirm membership\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134357360556001080\",\"user\":\"bob\"}"
+    },
+    {
+      "run": "eval-20261009T145821Z-04",
+      "n": 3,
+      "key": "3deda921030d6346e31407c1c5440f35003070227fa634f1afac57c21995ffd9",
+      "decision": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify membership state\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"groups\":[\"GG-Staff\",\"GG-Finance\"],\"user\":\"bob\"}"
+    }
+  ],
+  "audit": [
+    {
+      "seq": 67,
+      "run": "eval-20261009T145821Z-04",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Manager-approved Finance starter bob needs GG-Finance AD membership. Inspect groups, add approved membership, verify. This ticket is AD only.\"}",
+      "at": "2026-10-09T14:59:17.536221+00:00"
+    },
+    {
+      "seq": 68,
+      "run": "eval-20261009T145821Z-04",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:59:17.565564+00:00"
+    },
+    {
+      "seq": 69,
+      "run": "eval-20261009T145821Z-04",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect current AD group membership\",\"reflection\":\"Verify current membership state\"}",
+      "at": "2026-10-09T14:59:18.737015+00:00"
+    },
+    {
+      "seq": 70,
+      "run": "eval-20261009T145821Z-04",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect current AD group membership\",\"reflection\":\"Verify current membership state\"},\"key\":\"06495fa72586e424eb4df3ef2fc81ab9582dc0fb0505d565de786669b6a945f2\",\"step\":1}",
+      "at": "2026-10-09T14:59:18.759031+00:00"
+    },
+    {
+      "seq": 71,
+      "run": "eval-20261009T145821Z-04",
+      "event": "approval",
+      "data": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"approved\":true,\"key\":\"06495fa72586e424eb4df3ef2fc81ab9582dc0fb0505d565de786669b6a945f2\",\"reviewer\":\"Nazmul Hassan (explicit chat approval); explicit bounded fixture approval\"}",
+      "at": "2026-10-09T14:59:18.783423+00:00"
+    },
+    {
+      "seq": 72,
+      "run": "eval-20261009T145821Z-04",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"attempt\":1,\"key\":\"06495fa72586e424eb4df3ef2fc81ab9582dc0fb0505d565de786669b6a945f2\",\"step\":1}",
+      "at": "2026-10-09T14:59:18.807776+00:00"
+    },
+    {
+      "seq": 73,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Finance']\",\"output\":\"alice\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:19.440685+00:00"
+    },
+    {
+      "seq": 74,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'addmembers', 'GG-Finance', 'bob']\",\"output\":\"Added members to group GG-Finance\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:20.116310+00:00"
+    },
+    {
+      "seq": 75,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Finance']\",\"output\":\"alice\\nbob\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:20.714945+00:00"
+    },
+    {
+      "seq": 76,
+      "run": "eval-20261009T145821Z-04",
+      "event": "observe",
+      "data": "{\"result\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\",\"verified\":true},\"step\":1}",
+      "at": "2026-10-09T14:59:20.742701+00:00"
+    },
+    {
+      "seq": 77,
+      "run": "eval-20261009T145821Z-04",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify bob's membership in GG-Finance\",\"reflection\":\"Confirm membership\"}",
+      "at": "2026-10-09T14:59:21.800068+00:00"
+    },
+    {
+      "seq": 78,
+      "run": "eval-20261009T145821Z-04",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify bob's membership in GG-Finance\",\"reflection\":\"Confirm membership\"},\"key\":\"50b2ff30bb5226bdf262bfebb2e7780993883653de23b8a22f1f337b2d379dc8\",\"step\":2}",
+      "at": "2026-10-09T14:59:21.824511+00:00"
+    },
+    {
+      "seq": 79,
+      "run": "eval-20261009T145821Z-04",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_lookup\"},\"attempt\":1,\"key\":\"50b2ff30bb5226bdf262bfebb2e7780993883653de23b8a22f1f337b2d379dc8\",\"step\":2}",
+      "at": "2026-10-09T14:59:21.848008+00:00"
+    },
+    {
+      "seq": 80,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'bob']\",\"output\":\"dn: CN=bob,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: bob\\ninstanceType: 4\\nwhenCreated: 20261006045415.0Z\\nwhenChanged: 20261006045415.0Z\\nuSNCreated: 4082\\nname: bob\\nobjectGUID: a7d925b7-ac0f-420e-bed4-3bd6532e1023\\nbadPwdCount: 0\\ncodePage: 0\\ncountryCode: 0\\nbadPasswordTime: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1107\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: bob\\nsAMAccountType: 805306368\\nuserPrincipalName: bob@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134357360556001080\\nuserAccountControl: 512\\nuSNChanged: 4084\\nmemberOf: CN=GG-Staff,OU=Staff,DC=itops,DC=lab\\nmemberOf: CN=GG-Finance,OU=Finance,DC=itops,DC=lab\\ndistinguishedName: CN=bob,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:22.510821+00:00"
+    },
+    {
+      "seq": 81,
+      "run": "eval-20261009T145821Z-04",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134357360556001080\",\"user\":\"bob\"},\"step\":2}",
+      "at": "2026-10-09T14:59:22.538261+00:00"
+    },
+    {
+      "seq": 82,
+      "run": "eval-20261009T145821Z-04",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify membership state\"}",
+      "at": "2026-10-09T14:59:23.434287+00:00"
+    },
+    {
+      "seq": 83,
+      "run": "eval-20261009T145821Z-04",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify membership state\"},\"key\":\"3deda921030d6346e31407c1c5440f35003070227fa634f1afac57c21995ffd9\",\"step\":3}",
+      "at": "2026-10-09T14:59:23.457473+00:00"
+    },
+    {
+      "seq": 84,
+      "run": "eval-20261009T145821Z-04",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"attempt\":1,\"key\":\"3deda921030d6346e31407c1c5440f35003070227fa634f1afac57c21995ffd9\",\"step\":3}",
+      "at": "2026-10-09T14:59:23.481894+00:00"
+    },
+    {
+      "seq": 85,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Staff']\",\"output\":\"alice\\nbob\\ncarol\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:24.167713+00:00"
+    },
+    {
+      "seq": 86,
+      "run": "eval-20261009T145821Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Finance']\",\"output\":\"alice\\nbob\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:59:24.773866+00:00"
+    },
+    {
+      "seq": 87,
+      "run": "eval-20261009T145821Z-04",
+      "event": "observe",
+      "data": "{\"result\":{\"groups\":[\"GG-Staff\",\"GG-Finance\"],\"user\":\"bob\"},\"step\":3}",
+      "at": "2026-10-09T14:59:24.796887+00:00"
+    },
+    {
+      "seq": 88,
+      "run": "eval-20261009T145821Z-04",
+      "event": "reflection",
+      "data": "{\"kind\":\"resolve\",\"plan\":\"Complete\",\"reflection\":\"Verified bob's membership in GG-Finance\",\"summary\":\"bob is a member of GG-Finance.\"}",
+      "at": "2026-10-09T14:59:25.621887+00:00"
+    },
+    {
+      "seq": 89,
+      "run": "eval-20261009T145821Z-04",
+      "event": "resolved",
+      "data": "{\"summary\":\"bob is a member of GG-Finance.\"}",
+      "at": "2026-10-09T14:59:25.649425+00:00"
+    }
+  ]
+}

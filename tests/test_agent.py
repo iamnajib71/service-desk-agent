@@ -102,6 +102,21 @@ class AgentTests(unittest.TestCase):
     def test_no_unobserved_resolution(self):
         self.assertEqual(self.engine().start("empty", "ticket"), "escalated")
 
+    def test_all_failed_steps_cannot_resolve(self):
+        self.tools.failures = 3
+        engine = self.engine([act("ad_lookup", user="bob")])
+        self.assertEqual(engine.start("failed", "Look up bob"), "escalated")
+        self.assertEqual(self.store.steps("failed")[0]["attempts"], 3)
+
+    def test_exhausted_step_can_reflect_and_choose_alternate(self):
+        self.tools.failures = 3
+        engine = self.engine([act("ad_lookup", user="bob"), act("kuma_status")])
+        self.assertEqual(engine.start("alternate", "Check bob and office status"), "resolved")
+        steps = self.store.steps("alternate")
+        self.assertIn("error", json.loads(steps[0]["result"]))
+        self.assertTrue(json.loads(steps[1]["result"])["verified"])
+        self.assertEqual(len(steps), 2)
+
     def test_resume_completed_run_no_effect(self):
         engine = self.engine([act("ad_unlock", user="bob")])
         engine.start("complete", "unlock bob")
@@ -218,4 +233,3 @@ class AgentTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

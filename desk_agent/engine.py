@@ -69,7 +69,7 @@ class Engine:
                 if decision["kind"] != "act":
                     status = "resolved" if decision["kind"] == "resolve" else "escalated"
                     # A model cannot close a ticket without at least one real observation.
-                    if status == "resolved" and not steps:
+                    if status == "resolved" and not any("error" not in json.loads(s["result"]) for s in steps):
                         status = "escalated"
                         decision["summary"] = "No observed evidence; human verification required"
                     if dry_run:
@@ -160,4 +160,3 @@ class Engine:
             if not done:
                 self.store.state(run, step["n"], "done", {"error": "Retries exhausted; choose safe alternate step or escalate"})
                 self.store.event(run, "step_failed", {"step": step["n"]})
-

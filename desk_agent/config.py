@@ -38,4 +38,3 @@ class Config:
             if value and re.search(r"PASSWORD|HASH|TOKEN|KEY|RESET_", key):
                 text = text.replace(value, "[REDACTED]")
         return re.sub(r"(?im)^((?:PrivateKey|PresharedKey)\s*=\s*).+$", r"\1[REDACTED]", text)
-

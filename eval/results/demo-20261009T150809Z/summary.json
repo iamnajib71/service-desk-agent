@@ -1,0 +1,14 @@
+{
+  "run": "demo-20261009T150809Z",
+  "status": "resolved",
+  "success": true,
+  "addgroup_calls": 1,
+  "process_exit": 86,
+  "evidence": {
+    "user": "bob",
+    "share": "Finance",
+    "accessible": true,
+    "output": ".                                   D        0  Tue Oct  6 10:12:42 2026\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\n\n\t\t1055762868 blocks of size 1024. 983928068 blocks available"
+  },
+  "seconds": 43.58
+}

@@ -9,4 +9,3 @@ print(f"GIF: {gif.n_frames} frames, {duration:.2f}s, {(root / 'docs/demo.gif').s
 assert 30 <= duration <= 90, "Demo must be 30..90 seconds"
 assert Image.open(root / "docs/social-preview.png").size == (1280, 640)
 print("Media checks PASS")
-

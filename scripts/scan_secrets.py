@@ -19,4 +19,3 @@ for name in filter(None, paths):
 if bad:
     raise SystemExit("Secret scan failed: " + ", ".join(bad))
 print(f"Secret scan PASS: {len(list(filter(None, paths)))} tracked files")
-

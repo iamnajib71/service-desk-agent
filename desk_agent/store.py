@@ -124,4 +124,3 @@ class Store:
     def export(self, run):
         return {"run": self.get(run), "steps": self.steps(run),
                 "audit": [dict(r) for r in self.db.execute("SELECT * FROM audit WHERE run=? ORDER BY seq", (run,))]}
-

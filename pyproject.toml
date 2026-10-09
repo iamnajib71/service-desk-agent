@@ -14,4 +14,3 @@ desk-agent = "desk_agent.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["desk_agent*"]
-
