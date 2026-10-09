@@ -1,0 +1,19 @@
+{
+  "source": "https://github.com/iamnajib71/service-desk-agent.git",
+  "source_commit": "4fc6841",
+  "verified_at": "2026-10-10 Australia/Sydney",
+  "platform": "Windows",
+  "python": "3.14.3",
+  "unit_tests_passed": 26,
+  "readme_model_pulls": "passed",
+  "readme_first_check": "resolved",
+  "quick_start_audit": "github-quick-start-agent.json",
+  "recovery_demo": "../demo-20261009T233319Z/summary.json",
+  "recovery_process_exit": 86,
+  "recovery_addgroup_calls": 1,
+  "fixture_cleanup": "passed",
+  "ci_run": "https://github.com/iamnajib71/service-desk-agent/actions/runs/38004912365",
+  "ci_matrix": "Windows/Linux, Python 3.11/3.14: all passed",
+  "pages_run": "https://github.com/iamnajib71/service-desk-agent/actions/runs/38004912296",
+  "hosted_replay": "https://iamnajib71.github.io/service-desk-agent/"
+}

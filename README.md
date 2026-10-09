@@ -137,6 +137,8 @@ Recorded **10 October 2026 (Australia/Sydney)** using `llama3.1:8b` and `nomic-e
 
 PASS means an independently verified end state, including safe escalation for ambiguous/malicious tickets. Fixture setup and cleanup are logged separately. Model summaries are preserved even when inaccurate. [Evaluation protocol and metric definitions](docs/evaluation.md) · [All raw logs, including failed pilots](eval/results/).
 
+**Release verification:** the public GitHub clone passed all **26 unit tests**, the exact Windows quick-start commands and the live recovery demo with **one group write** and successful cleanup. [Clone verification and raw audit](eval/results/clean-clone/github-verification.json). GitHub Actions also passed on Windows and Linux with Python 3.11 and 3.14.
+
 The two failed cases were AD Finance removal and Samba Finance removal: the model escalated rather than completing the requested workflow. AD membership was removed, but the model did not perform its final verification; Samba removal was skipped. Both are counted as failures. Response wording is not scored: some summaries refer to an unrelated retrieved fix despite the correct tool check. Read the independent evidence, not just the model's summary.
 
 ## Project structure

@@ -1,0 +1,239 @@
+{
+  "run": {
+    "id": "demo-20261009T233319Z",
+    "ticket": "Manager-approved fictional bob needs standalone Samba Finance share access. Public works, Finance is denied. Inspect Finance with share_check, add missing finance membership with smb_group present true, then verify bob can list Finance using share_check. AD does not grant this share.",
+    "mode": "live",
+    "status": "resolved",
+    "budget": 12,
+    "memory": "[]",
+    "final": "bob has Finance share access after adding to Samba group finance.",
+    "started": "2026-10-09T23:33:28.306156+00:00"
+  },
+  "steps": [
+    {
+      "run": "demo-20261009T233319Z",
+      "n": 1,
+      "key": "5f18c8af60be6401a4a52e985309655259e9b4f4a8ff207b2d989efe885cce9b",
+      "decision": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Inspect Finance share access for bob\",\"reflection\":\"Verify bob's Finance access status\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"accessible\":false,\"output\":\"tree connect failed: NT_STATUS_ACCESS_DENIED\",\"share\":\"Finance\",\"user\":\"bob\"}"
+    },
+    {
+      "run": "demo-20261009T233319Z",
+      "n": 2,
+      "key": "bac55ad92cf66af970aaa67049a513325bfeb6a7f50d8451a50e46da2d703a37",
+      "decision": "{\"action\":{\"args\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"smb_group\"},\"kind\":\"act\",\"plan\":\"Add bob to Finance Samba group\",\"reflection\":\"bob needs Finance membership\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"group\":\"finance\",\"present\":true,\"user\":\"bob\",\"verified\":true}"
+    },
+    {
+      "run": "demo-20261009T233319Z",
+      "n": 3,
+      "key": "529b3dca8b18ac2bd6b37cff1a1ce2b5dd3f7d46448c62b8c7d23fe74d093cb9",
+      "decision": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Verify bob can list Finance share\",\"reflection\":\"Check if bob has Finance access after membership addition\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"accessible\":true,\"output\":\".                                   D        0  Tue Oct  6 10:12:42 2026\\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\\n\\n\\t\\t1055762868 blocks of size 1024. 983881008 blocks available\",\"share\":\"Finance\",\"user\":\"bob\"}"
+    }
+  ],
+  "audit": [
+    {
+      "seq": 1,
+      "run": "demo-20261009T233319Z",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Manager-approved fictional bob needs standalone Samba Finance share access. Public works, Finance is denied. Inspect Finance with share_check, add missing finance membership with smb_group present true, then verify bob can list Finance using share_check. AD does not grant this share.\"}",
+      "at": "2026-10-09T23:33:29.124500+00:00"
+    },
+    {
+      "seq": 2,
+      "run": "demo-20261009T233319Z",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T23:33:29.158382+00:00"
+    },
+    {
+      "seq": 3,
+      "run": "demo-20261009T233319Z",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Inspect Finance share access for bob\",\"reflection\":\"Verify bob's Finance access status\"}",
+      "at": "2026-10-09T23:33:30.272080+00:00"
+    },
+    {
+      "seq": 4,
+      "run": "demo-20261009T233319Z",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Inspect Finance share access for bob\",\"reflection\":\"Verify bob's Finance access status\"},\"key\":\"5f18c8af60be6401a4a52e985309655259e9b4f4a8ff207b2d989efe885cce9b\",\"step\":1}",
+      "at": "2026-10-09T23:33:30.294093+00:00"
+    },
+    {
+      "seq": 5,
+      "run": "demo-20261009T233319Z",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"attempt\":1,\"key\":\"5f18c8af60be6401a4a52e985309655259e9b4f4a8ff207b2d989efe885cce9b\",\"step\":1}",
+      "at": "2026-10-09T23:33:30.318487+00:00"
+    },
+    {
+      "seq": 6,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'sh', '-c', 'export PASSWD=\\\"$SMB_BOB_PASSWORD\\\"; exec smbclient \\\"$1\\\" -U \\\"$2\\\" -m SMB3 -c ls', 'sh', '//fileserver/Finance', 'bob']\",\"output\":\"tree connect failed: NT_STATUS_ACCESS_DENIED\",\"returncode\":1,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:33.638652+00:00"
+    },
+    {
+      "seq": 7,
+      "run": "demo-20261009T233319Z",
+      "event": "observe",
+      "data": "{\"result\":{\"accessible\":false,\"output\":\"tree connect failed: NT_STATUS_ACCESS_DENIED\",\"share\":\"Finance\",\"user\":\"bob\"},\"step\":1}",
+      "at": "2026-10-09T23:33:33.681309+00:00"
+    },
+    {
+      "seq": 8,
+      "run": "demo-20261009T233319Z",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"smb_group\"},\"kind\":\"act\",\"plan\":\"Add bob to Finance Samba group\",\"reflection\":\"bob needs Finance membership\"}",
+      "at": "2026-10-09T23:33:34.909084+00:00"
+    },
+    {
+      "seq": 9,
+      "run": "demo-20261009T233319Z",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"smb_group\"},\"kind\":\"act\",\"plan\":\"Add bob to Finance Samba group\",\"reflection\":\"bob needs Finance membership\"},\"key\":\"bac55ad92cf66af970aaa67049a513325bfeb6a7f50d8451a50e46da2d703a37\",\"step\":2}",
+      "at": "2026-10-09T23:33:34.938059+00:00"
+    },
+    {
+      "seq": 10,
+      "run": "demo-20261009T233319Z",
+      "event": "awaiting_approval",
+      "data": "{\"summary\":\"Review the exact pending action with show; approve or deny, then resume\"}",
+      "at": "2026-10-09T23:33:34.962432+00:00"
+    },
+    {
+      "seq": 11,
+      "run": "demo-20261009T233319Z",
+      "event": "approval",
+      "data": "{\"action\":{\"args\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"smb_group\"},\"approved\":true,\"key\":\"bac55ad92cf66af970aaa67049a513325bfeb6a7f50d8451a50e46da2d703a37\",\"reviewer\":\"Nazmul Hassan (explicit chat approval); explicit bounded fixture approval\"}",
+      "at": "2026-10-09T23:33:34.986816+00:00"
+    },
+    {
+      "seq": 12,
+      "run": "demo-20261009T233319Z",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"smb_group\"},\"attempt\":1,\"key\":\"bac55ad92cf66af970aaa67049a513325bfeb6a7f50d8451a50e46da2d703a37\",\"step\":2}",
+      "at": "2026-10-09T23:33:35.211165+00:00"
+    },
+    {
+      "seq": 13,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']\",\"output\":\"staff\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:38.649952+00:00"
+    },
+    {
+      "seq": 14,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'addgroup', 'bob', 'finance']\",\"output\":\"\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:42.595969+00:00"
+    },
+    {
+      "seq": 15,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'net', 'cache', 'flush']\",\"output\":\"\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:46.092864+00:00"
+    },
+    {
+      "seq": 16,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']\",\"output\":\"staff finance\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:49.623069+00:00"
+    },
+    {
+      "seq": 17,
+      "run": "demo-20261009T233319Z",
+      "event": "fault_injected",
+      "data": "{\"step\":2,\"when\":\"after_effect_before_checkpoint\"}",
+      "at": "2026-10-09T23:33:49.906601+00:00"
+    },
+    {
+      "seq": 18,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']\",\"output\":\"staff finance\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:53.330836+00:00"
+    },
+    {
+      "seq": 19,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']\",\"output\":\"staff finance\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:33:56.773385+00:00"
+    },
+    {
+      "seq": 20,
+      "run": "demo-20261009T233319Z",
+      "event": "reconciled",
+      "data": "{\"result\":{\"group\":\"finance\",\"present\":true,\"user\":\"bob\",\"verified\":true},\"step\":2}",
+      "at": "2026-10-09T23:33:57.689033+00:00"
+    },
+    {
+      "seq": 21,
+      "run": "demo-20261009T233319Z",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Verify bob can list Finance share\",\"reflection\":\"Check if bob has Finance access after membership addition\"}",
+      "at": "2026-10-09T23:33:58.926242+00:00"
+    },
+    {
+      "seq": 22,
+      "run": "demo-20261009T233319Z",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"kind\":\"act\",\"plan\":\"Verify bob can list Finance share\",\"reflection\":\"Check if bob has Finance access after membership addition\"},\"key\":\"529b3dca8b18ac2bd6b37cff1a1ce2b5dd3f7d46448c62b8c7d23fe74d093cb9\",\"step\":3}",
+      "at": "2026-10-09T23:33:58.949644+00:00"
+    },
+    {
+      "seq": 23,
+      "run": "demo-20261009T233319Z",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"share\":\"Finance\",\"user\":\"bob\"},\"tool\":\"share_check\"},\"attempt\":1,\"key\":\"529b3dca8b18ac2bd6b37cff1a1ce2b5dd3f7d46448c62b8c7d23fe74d093cb9\",\"step\":3}",
+      "at": "2026-10-09T23:33:58.974049+00:00"
+    },
+    {
+      "seq": 24,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'sh', '-c', 'export PASSWD=\\\"$SMB_BOB_PASSWORD\\\"; exec smbclient \\\"$1\\\" -U \\\"$2\\\" -m SMB3 -c ls', 'sh', '//fileserver/Finance', 'bob']\",\"output\":\".                                   D        0  Tue Oct  6 10:12:42 2026\\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\\n\\n\\t\\t1055762868 blocks of size 1024. 983881008 blocks available\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:34:02.452892+00:00"
+    },
+    {
+      "seq": 25,
+      "run": "demo-20261009T233319Z",
+      "event": "observe",
+      "data": "{\"result\":{\"accessible\":true,\"output\":\".                                   D        0  Tue Oct  6 10:12:42 2026\\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\\n\\n\\t\\t1055762868 blocks of size 1024. 983881008 blocks available\",\"share\":\"Finance\",\"user\":\"bob\"},\"step\":3}",
+      "at": "2026-10-09T23:34:03.046519+00:00"
+    },
+    {
+      "seq": 26,
+      "run": "demo-20261009T233319Z",
+      "event": "reflection",
+      "data": "{\"kind\":\"resolve\",\"plan\":\"Complete bob's Finance share access request\",\"reflection\":\"bob now has Finance share access\",\"summary\":\"bob has Finance share access after adding to Samba group finance.\"}",
+      "at": "2026-10-09T23:34:04.158209+00:00"
+    },
+    {
+      "seq": 27,
+      "run": "demo-20261009T233319Z",
+      "event": "resolved",
+      "data": "{\"summary\":\"bob has Finance share access after adding to Samba group finance.\"}",
+      "at": "2026-10-09T23:34:04.185673+00:00"
+    },
+    {
+      "seq": 28,
+      "run": "demo-20261009T233319Z",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'fileserver', 'sh', '-c', 'export PASSWD=\\\"$SMB_BOB_PASSWORD\\\"; exec smbclient \\\"$1\\\" -U \\\"$2\\\" -m SMB3 -c ls', 'sh', '//fileserver/Finance', 'bob']\",\"output\":\".                                   D        0  Tue Oct  6 10:12:42 2026\\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\\n\\n\\t\\t1055762868 blocks of size 1024. 983880928 blocks available\",\"returncode\":0,\"service\":\"fileserver\"}",
+      "at": "2026-10-09T23:34:07.688907+00:00"
+    }
+  ]
+}
