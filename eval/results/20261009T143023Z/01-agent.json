@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-01",
+    "ticket": "Fictional user sdtest_T143023Z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:30:31.228576+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 1,
+      "run": "eval-20261009T143023Z-01",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Fictional user sdtest_T143023Z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.\"}",
+      "at": "2026-10-09T14:30:31.423639+00:00"
+    },
+    {
+      "seq": 2,
+      "run": "eval-20261009T143023Z-01",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:30:31.459401+00:00"
+    },
+    {
+      "seq": 3,
+      "run": "eval-20261009T143023Z-01",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Verify AD lockout status\\\", \\\"reflection\\\": \\\"Need current lockoutTime\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_01\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:32.812948+00:00"
+    },
+    {
+      "seq": 4,
+      "run": "eval-20261009T143023Z-01",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect AD lockout status\\\", \\\"reflection\\\": \\\"Need current lockoutTime\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_01\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:34.051122+00:00"
+    },
+    {
+      "seq": 5,
+      "run": "eval-20261009T143023Z-01",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect AD lockout status\\\", \\\"reflection\\\": \\\"Need current lockoutTime\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_01\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:35.772499+00:00"
+    },
+    {
+      "seq": 6,
+      "run": "eval-20261009T143023Z-01",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:30:37.792861+00:00"
+    }
+  ]
+}

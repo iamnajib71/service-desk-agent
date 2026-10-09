@@ -1,0 +1,111 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-04",
+    "ticket": "Manager-approved Finance starter bob needs GG-Finance AD membership. Inspect groups, add approved membership, verify. This ticket is AD only.",
+    "mode": "live",
+    "status": "awaiting_approval",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Review the exact pending action with show; approve or deny, then resume",
+    "started": "2026-10-09T14:31:10.558635+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T143023Z-04",
+      "n": 1,
+      "key": "a06f94a3d4b77b21351b32812660bb71b4731d3ae1def1c9f24d09c6b6d6b10b",
+      "decision": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD groups\",\"reflection\":\"Verify current membership\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"groups\":[\"GG-Staff\"],\"user\":\"bob\"}"
+    },
+    {
+      "run": "eval-20261009T143023Z-04",
+      "n": 2,
+      "key": "052a8e135886e3aad07481a31abda045d513e76cd5910ecea135d86a34a00cfc",
+      "decision": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":false,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Add bob to GG-Finance group\",\"reflection\":\"bob not in GG-Finance\"}",
+      "state": "pending",
+      "attempts": 0,
+      "result": null
+    }
+  ],
+  "audit": [
+    {
+      "seq": 19,
+      "run": "eval-20261009T143023Z-04",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Manager-approved Finance starter bob needs GG-Finance AD membership. Inspect groups, add approved membership, verify. This ticket is AD only.\"}",
+      "at": "2026-10-09T14:31:10.591026+00:00"
+    },
+    {
+      "seq": 20,
+      "run": "eval-20261009T143023Z-04",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:31:10.603676+00:00"
+    },
+    {
+      "seq": 21,
+      "run": "eval-20261009T143023Z-04",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD groups\",\"reflection\":\"Verify current membership\"}",
+      "at": "2026-10-09T14:31:11.813726+00:00"
+    },
+    {
+      "seq": 22,
+      "run": "eval-20261009T143023Z-04",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"kind\":\"act\",\"plan\":\"Inspect AD groups\",\"reflection\":\"Verify current membership\"},\"key\":\"a06f94a3d4b77b21351b32812660bb71b4731d3ae1def1c9f24d09c6b6d6b10b\",\"step\":1}",
+      "at": "2026-10-09T14:31:12.034440+00:00"
+    },
+    {
+      "seq": 23,
+      "run": "eval-20261009T143023Z-04",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"bob\"},\"tool\":\"ad_groups\"},\"attempt\":1,\"key\":\"a06f94a3d4b77b21351b32812660bb71b4731d3ae1def1c9f24d09c6b6d6b10b\",\"step\":1}",
+      "at": "2026-10-09T14:31:12.060676+00:00"
+    },
+    {
+      "seq": 24,
+      "run": "eval-20261009T143023Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Staff']\",\"output\":\"alice\\nbob\\ncarol\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:31:12.689986+00:00"
+    },
+    {
+      "seq": 25,
+      "run": "eval-20261009T143023Z-04",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Finance']\",\"output\":\"alice\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:31:13.318063+00:00"
+    },
+    {
+      "seq": 26,
+      "run": "eval-20261009T143023Z-04",
+      "event": "observe",
+      "data": "{\"result\":{\"groups\":[\"GG-Staff\"],\"user\":\"bob\"},\"step\":1}",
+      "at": "2026-10-09T14:31:13.342383+00:00"
+    },
+    {
+      "seq": 27,
+      "run": "eval-20261009T143023Z-04",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":false,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Add bob to GG-Finance group\",\"reflection\":\"bob not in GG-Finance\"}",
+      "at": "2026-10-09T14:31:14.351244+00:00"
+    },
+    {
+      "seq": 28,
+      "run": "eval-20261009T143023Z-04",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":false,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Add bob to GG-Finance group\",\"reflection\":\"bob not in GG-Finance\"},\"key\":\"052a8e135886e3aad07481a31abda045d513e76cd5910ecea135d86a34a00cfc\",\"step\":2}",
+      "at": "2026-10-09T14:31:14.378283+00:00"
+    },
+    {
+      "seq": 29,
+      "run": "eval-20261009T143023Z-04",
+      "event": "awaiting_approval",
+      "data": "{\"summary\":\"Review the exact pending action with show; approve or deny, then resume\"}",
+      "at": "2026-10-09T14:31:14.402616+00:00"
+    }
+  ]
+}

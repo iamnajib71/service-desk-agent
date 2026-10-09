@@ -1,0 +1,211 @@
+{
+  "run": {
+    "id": "eval-20261009T143758Z-03",
+    "ticket": "Identity verified for fictional sdtest_t143758z_03. Reset this temporary AD user's password using ad_reset and require change at next logon. Verify pwdLastSet is 0.",
+    "mode": "live",
+    "status": "resolved",
+    "budget": 12,
+    "memory": "[{\"resolution\":\"Account sdtest_t143758z_01 is unlocked and ready for use.\",\"score\":0.87,\"ticket\":\"Fictional user sdtest_t143758z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.\",\"ticket_id\":\"eval-20261009T143758Z-01\"},{\"resolution\":\"AD account sdtest_t143758z_02 is unlocked and exists. | Retrieved past tickets: eval-20261009T143758Z-01\",\"score\":0.7739,\"ticket\":\"Check AD account sdtest_t143758z_02: unlock only if locked, verify current state.\",\"ticket_id\":\"eval-20261009T143758Z-02\"}]",
+    "final": "Password reset and next-logon change successful for sdtest_t143758z_03. | Retrieved past tickets: eval-20261009T143758Z-01, eval-20261009T143758Z-02",
+    "started": "2026-10-09T14:38:36.287373+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T143758Z-03",
+      "n": 1,
+      "key": "e0bbde9a70c0ad0a21a3ae7ab404ae26a84b14700cd9d9f9d2ee990bd09b9cab",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t143758z_03\",\"reflection\":\"Current state of temporary AD user unknown\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360303159559640\",\"user\":\"sdtest_t143758z_03\"}"
+    },
+    {
+      "run": "eval-20261009T143758Z-03",
+      "n": 2,
+      "key": "4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_reset\"},\"kind\":\"act\",\"plan\":\"Reset password and require change at next logon\",\"reflection\":\"Current state verified, proceed with password reset\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"0\",\"reset_marker\":true,\"user\":\"sdtest_t143758z_03\"}"
+    },
+    {
+      "run": "eval-20261009T143758Z-03",
+      "n": 3,
+      "key": "f017cd5350312e36aed068d372c8d5c7c051c2f206283ddac44b29f3f580c45c",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify password reset and next-logon change\",\"reflection\":\"Current state after password reset unknown\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"0\",\"user\":\"sdtest_t143758z_03\"}"
+    }
+  ],
+  "audit": [
+    {
+      "seq": 32,
+      "run": "eval-20261009T143758Z-03",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Identity verified for fictional sdtest_t143758z_03. Reset this temporary AD user's password using ad_reset and require change at next logon. Verify pwdLastSet is 0.\"}",
+      "at": "2026-10-09T14:38:36.303581+00:00"
+    },
+    {
+      "seq": 33,
+      "run": "eval-20261009T143758Z-03",
+      "event": "memory_search",
+      "data": "{\"citations\":[{\"resolution\":\"Account sdtest_t143758z_01 is unlocked and ready for use.\",\"score\":0.87,\"ticket\":\"Fictional user sdtest_t143758z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.\",\"ticket_id\":\"eval-20261009T143758Z-01\"},{\"resolution\":\"AD account sdtest_t143758z_02 is unlocked and exists. | Retrieved past tickets: eval-20261009T143758Z-01\",\"score\":0.7739,\"ticket\":\"Check AD account sdtest_t143758z_02: unlock only if locked, verify current state.\",\"ticket_id\":\"eval-20261009T143758Z-02\"}]}",
+      "at": "2026-10-09T14:38:36.316250+00:00"
+    },
+    {
+      "seq": 34,
+      "run": "eval-20261009T143758Z-03",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t143758z_03\",\"reflection\":\"Current state of temporary AD user unknown\"}",
+      "at": "2026-10-09T14:38:37.655651+00:00"
+    },
+    {
+      "seq": 35,
+      "run": "eval-20261009T143758Z-03",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t143758z_03\",\"reflection\":\"Current state of temporary AD user unknown\"},\"key\":\"e0bbde9a70c0ad0a21a3ae7ab404ae26a84b14700cd9d9f9d2ee990bd09b9cab\",\"step\":1}",
+      "at": "2026-10-09T14:38:37.680356+00:00"
+    },
+    {
+      "seq": 36,
+      "run": "eval-20261009T143758Z-03",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"attempt\":1,\"key\":\"e0bbde9a70c0ad0a21a3ae7ab404ae26a84b14700cd9d9f9d2ee990bd09b9cab\",\"step\":1}",
+      "at": "2026-10-09T14:38:37.704761+00:00"
+    },
+    {
+      "seq": 37,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t143758z_03']\",\"output\":\"dn: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t143758z_03\\ninstanceType: 4\\nwhenCreated: 20261009143835.0Z\\nwhenChanged: 20261009143835.0Z\\nuSNCreated: 5589\\nname: sdtest_t143758z_03\\nobjectGUID: acd8ce2f-90bd-4916-9ebc-9cf89bd5f966\\nbadPwdCount: 0\\ncodePage: 0\\ncountryCode: 0\\nbadPasswordTime: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1115\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t143758z_03\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t143758z_03@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134360303159559640\\nuserAccountControl: 512\\nuSNChanged: 5591\\ndistinguishedName: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:38.548136+00:00"
+    },
+    {
+      "seq": 38,
+      "run": "eval-20261009T143758Z-03",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360303159559640\",\"user\":\"sdtest_t143758z_03\"},\"step\":1}",
+      "at": "2026-10-09T14:38:38.573969+00:00"
+    },
+    {
+      "seq": 39,
+      "run": "eval-20261009T143758Z-03",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_reset\"},\"kind\":\"act\",\"plan\":\"Reset password and require change at next logon\",\"reflection\":\"Current state verified, proceed with password reset\"}",
+      "at": "2026-10-09T14:38:39.585926+00:00"
+    },
+    {
+      "seq": 40,
+      "run": "eval-20261009T143758Z-03",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_reset\"},\"kind\":\"act\",\"plan\":\"Reset password and require change at next logon\",\"reflection\":\"Current state verified, proceed with password reset\"},\"key\":\"4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6\",\"step\":2}",
+      "at": "2026-10-09T14:38:39.610657+00:00"
+    },
+    {
+      "seq": 41,
+      "run": "eval-20261009T143758Z-03",
+      "event": "approval",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_reset\"},\"approved\":true,\"key\":\"4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6\",\"reviewer\":\"Nazmul Hassan (explicit chat approval); explicit bounded fixture approval\"}",
+      "at": "2026-10-09T14:38:39.634170+00:00"
+    },
+    {
+      "seq": 42,
+      "run": "eval-20261009T143758Z-03",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_reset\"},\"attempt\":1,\"key\":\"4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6\",\"step\":2}",
+      "at": "2026-10-09T14:38:39.658555+00:00"
+    },
+    {
+      "seq": 43,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'sh', '-c', 'test -f \\\"/var/lib/samba/service-desk-agent/$1.done\\\"', 'sh', '4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6']\",\"output\":\"\",\"returncode\":1,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:39.950583+00:00"
+    },
+    {
+      "seq": 44,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'sh', '-c', 'set -eu; IFS= read -r password; mkdir -p /var/lib/samba/service-desk-agent; samba-tool user setpassword \\\"$1\\\" --newpassword=\\\"$password\\\" --must-change-at-next-login; touch \\\"/var/lib/samba/service-desk-agent/$2.done\\\"', 'sh', 'sdtest_t143758z_03', '4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6']\",\"output\":\"Changed password OK\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:40.711877+00:00"
+    },
+    {
+      "seq": 45,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'sh', '-c', 'test -f \\\"/var/lib/samba/service-desk-agent/$1.done\\\"', 'sh', '4353650eb688ae877590a4f6d31808621d6897efa3b8744d3f3a3ba3c89c99d6']\",\"output\":\"\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:41.133304+00:00"
+    },
+    {
+      "seq": 46,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t143758z_03']\",\"output\":\"dn: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t143758z_03\\ninstanceType: 4\\nwhenCreated: 20261009143835.0Z\\nuSNCreated: 5589\\nname: sdtest_t143758z_03\\nobjectGUID: acd8ce2f-90bd-4916-9ebc-9cf89bd5f966\\nbadPwdCount: 0\\ncodePage: 0\\ncountryCode: 0\\nbadPasswordTime: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1115\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t143758z_03\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t143758z_03@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\nuserAccountControl: 512\\nwhenChanged: 20261009143840.0Z\\npwdLastSet: 0\\nuSNChanged: 5593\\ndistinguishedName: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:41.793919+00:00"
+    },
+    {
+      "seq": 47,
+      "run": "eval-20261009T143758Z-03",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"0\",\"reset_marker\":true,\"user\":\"sdtest_t143758z_03\"},\"step\":2}",
+      "at": "2026-10-09T14:38:41.822701+00:00"
+    },
+    {
+      "seq": 48,
+      "run": "eval-20261009T143758Z-03",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Unverified closure: After ad_reset, call ad_lookup for the same target and verify the desired state before resolve.\"}",
+      "at": "2026-10-09T14:38:42.996953+00:00"
+    },
+    {
+      "seq": 49,
+      "run": "eval-20261009T143758Z-03",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify password reset and next-logon change\",\"reflection\":\"Current state after password reset unknown\"}",
+      "at": "2026-10-09T14:38:44.406984+00:00"
+    },
+    {
+      "seq": 50,
+      "run": "eval-20261009T143758Z-03",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify password reset and next-logon change\",\"reflection\":\"Current state after password reset unknown\"},\"key\":\"f017cd5350312e36aed068d372c8d5c7c051c2f206283ddac44b29f3f580c45c\",\"step\":3}",
+      "at": "2026-10-09T14:38:44.432390+00:00"
+    },
+    {
+      "seq": 51,
+      "run": "eval-20261009T143758Z-03",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t143758z_03\"},\"tool\":\"ad_lookup\"},\"attempt\":1,\"key\":\"f017cd5350312e36aed068d372c8d5c7c051c2f206283ddac44b29f3f580c45c\",\"step\":3}",
+      "at": "2026-10-09T14:38:44.455860+00:00"
+    },
+    {
+      "seq": 52,
+      "run": "eval-20261009T143758Z-03",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t143758z_03']\",\"output\":\"dn: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t143758z_03\\ninstanceType: 4\\nwhenCreated: 20261009143835.0Z\\nuSNCreated: 5589\\nname: sdtest_t143758z_03\\nobjectGUID: acd8ce2f-90bd-4916-9ebc-9cf89bd5f966\\nbadPwdCount: 0\\ncodePage: 0\\ncountryCode: 0\\nbadPasswordTime: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1115\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t143758z_03\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t143758z_03@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\nuserAccountControl: 512\\nwhenChanged: 20261009143840.0Z\\npwdLastSet: 0\\nuSNChanged: 5593\\ndistinguishedName: CN=sdtest_t143758z_03,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:38:45.116544+00:00"
+    },
+    {
+      "seq": 53,
+      "run": "eval-20261009T143758Z-03",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"0\",\"user\":\"sdtest_t143758z_03\"},\"step\":3}",
+      "at": "2026-10-09T14:38:45.142757+00:00"
+    },
+    {
+      "seq": 54,
+      "run": "eval-20261009T143758Z-03",
+      "event": "reflection",
+      "data": "{\"kind\":\"resolve\",\"plan\":\"Complete\",\"reflection\":\"Password reset and next-logon change verified\",\"summary\":\"Password reset and next-logon change successful for sdtest_t143758z_03.\"}",
+      "at": "2026-10-09T14:38:45.989690+00:00"
+    },
+    {
+      "seq": 55,
+      "run": "eval-20261009T143758Z-03",
+      "event": "resolved",
+      "data": "{\"summary\":\"Password reset and next-logon change successful for sdtest_t143758z_03. | Retrieved past tickets: eval-20261009T143758Z-01, eval-20261009T143758Z-02\"}",
+      "at": "2026-10-09T14:38:46.011950+00:00"
+    }
+  ]
+}

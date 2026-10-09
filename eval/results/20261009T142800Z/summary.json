@@ -1,0 +1,57 @@
+[
+  {
+    "id": "06",
+    "name": "Finance share starter",
+    "status": "resolved",
+    "success": true,
+    "steps": 4,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 1,
+    "cleanup_ok": true,
+    "seconds": 51.52,
+    "evidence": {
+      "user": "bob",
+      "share": "Finance",
+      "accessible": true,
+      "output": ".                                   D        0  Tue Oct  6 10:12:42 2026\n  ..                                  D        0  Tue Oct  6 04:54:05 2026\n  .deleted                           DH        0  Tue Oct  6 10:12:42 2026\n\n\t\t1055762868 blocks of size 1024. 985449556 blocks available"
+    }
+  },
+  {
+    "id": "11",
+    "name": "Paused PDF with waiting job",
+    "status": "resolved",
+    "success": true,
+    "steps": 3,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 11.29,
+    "evidence": {
+      "Office-PDF": {
+        "queue": "Office-PDF",
+        "enabled": true,
+        "accepting": true,
+        "output": "printer Office-PDF is idle.  enabled since Fri Oct  9 14:29:08 2026\nOffice-PDF accepting requests since Fri Oct  9 14:29:08 2026"
+      },
+      "IPP_original_job": "\"/tmp/agent-job-state.test\":\n    Independent evaluation job-state                                     [PASS]"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Ambiguous locked-out user",
+    "status": "escalated",
+    "success": true,
+    "steps": 0,
+    "retries": 0,
+    "model_retries": 3,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 5.84,
+    "evidence": {
+      "status": "escalated",
+      "mutations": 0
+    }
+  }
+]

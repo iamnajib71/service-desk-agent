@@ -1,0 +1,48 @@
+[
+  {
+    "id": "06",
+    "name": "Finance share starter",
+    "status": "escalated",
+    "success": false,
+    "steps": 0,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 10.02,
+    "evidence": {
+      "status": "escalated"
+    }
+  },
+  {
+    "id": "11",
+    "name": "Paused PDF with waiting job",
+    "status": "escalated",
+    "success": false,
+    "steps": 0,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 5.2,
+    "evidence": {
+      "status": "escalated"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Ambiguous locked-out user",
+    "status": "escalated",
+    "success": true,
+    "steps": 0,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 1.51,
+    "evidence": {
+      "status": "escalated",
+      "mutations": 0
+    }
+  }
+]

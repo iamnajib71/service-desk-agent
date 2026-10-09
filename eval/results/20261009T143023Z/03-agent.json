@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-03",
+    "ticket": "Identity verified for fictional sdtest_T143023Z_03. Reset this temporary AD user's password using ad_reset and require change at next logon. Verify pwdLastSet is 0.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:30:57.657386+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 13,
+      "run": "eval-20261009T143023Z-03",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Identity verified for fictional sdtest_T143023Z_03. Reset this temporary AD user's password using ad_reset and require change at next logon. Verify pwdLastSet is 0.\"}",
+      "at": "2026-10-09T14:30:57.667305+00:00"
+    },
+    {
+      "seq": 14,
+      "run": "eval-20261009T143023Z-03",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:30:57.679064+00:00"
+    },
+    {
+      "seq": 15,
+      "run": "eval-20261009T143023Z-03",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Reset password\\\", \\\"reflection\\\": \\\"Temporary user needs new password\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_reset\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_03\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:58.924463+00:00"
+    },
+    {
+      "seq": 16,
+      "run": "eval-20261009T143023Z-03",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect current AD user state\\\", \\\"reflection\\\": \\\"Verify user properties\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_03\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:31:00.132163+00:00"
+    },
+    {
+      "seq": 17,
+      "run": "eval-20261009T143023Z-03",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Reset password\\\", \\\"reflection\\\": \\\"Require change at next logon\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_reset\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_03\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:31:01.812307+00:00"
+    },
+    {
+      "seq": 18,
+      "run": "eval-20261009T143023Z-03",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:31:03.836971+00:00"
+    }
+  ]
+}

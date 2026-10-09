@@ -1,0 +1,60 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-05",
+    "ticket": "Manager approved removing fictional bob from GG-Finance AD only. Inspect, remove membership, verify absence.",
+    "mode": "live",
+    "status": "awaiting_approval",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Review the exact pending action with show; approve or deny, then resume",
+    "started": "2026-10-09T14:31:24.080648+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T143023Z-05",
+      "n": 1,
+      "key": "ee328d7da4a9861e1c3a980da311a96211fb0589d6e69700b49196812cea0c47",
+      "decision": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify current membership state\"}",
+      "state": "pending",
+      "attempts": 0,
+      "result": null
+    }
+  ],
+  "audit": [
+    {
+      "seq": 30,
+      "run": "eval-20261009T143023Z-05",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Manager approved removing fictional bob from GG-Finance AD only. Inspect, remove membership, verify absence.\"}",
+      "at": "2026-10-09T14:31:24.298099+00:00"
+    },
+    {
+      "seq": 31,
+      "run": "eval-20261009T143023Z-05",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:31:24.333823+00:00"
+    },
+    {
+      "seq": 32,
+      "run": "eval-20261009T143023Z-05",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify current membership state\"}",
+      "at": "2026-10-09T14:31:25.621699+00:00"
+    },
+    {
+      "seq": 33,
+      "run": "eval-20261009T143023Z-05",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"group\":\"GG-Finance\",\"present\":true,\"user\":\"bob\"},\"tool\":\"ad_group\"},\"kind\":\"act\",\"plan\":\"Inspect AD group membership for bob\",\"reflection\":\"Verify current membership state\"},\"key\":\"ee328d7da4a9861e1c3a980da311a96211fb0589d6e69700b49196812cea0c47\",\"step\":1}",
+      "at": "2026-10-09T14:31:25.644439+00:00"
+    },
+    {
+      "seq": 34,
+      "run": "eval-20261009T143023Z-05",
+      "event": "awaiting_approval",
+      "data": "{\"summary\":\"Review the exact pending action with show; approve or deny, then resume\"}",
+      "at": "2026-10-09T14:31:25.668832+00:00"
+    }
+  ]
+}

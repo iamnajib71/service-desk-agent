@@ -1,0 +1,102 @@
+[
+  {
+    "at": "2026-10-09T14:54:48.534467+00:00",
+    "event": "command",
+    "data": {
+      "service": "directory",
+      "command": "['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'group', 'listmembers', 'GG-Finance']",
+      "returncode": 0,
+      "output": "alice"
+    }
+  },
+  {
+    "at": "2026-10-09T14:54:51.943290+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']",
+      "returncode": 0,
+      "output": "staff"
+    }
+  },
+  {
+    "at": "2026-10-09T14:54:52.355422+00:00",
+    "event": "command",
+    "data": {
+      "service": "printserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'printserver', 'lpstat', '-p', 'Office-PDF', '-a', 'Office-PDF']",
+      "returncode": 0,
+      "output": "printer Office-PDF is idle.  enabled since Fri Oct  9 14:53:02 2026\nOffice-PDF accepting requests since Fri Oct  9 14:53:02 2026"
+    }
+  },
+  {
+    "at": "2026-10-09T14:54:52.762706+00:00",
+    "event": "command",
+    "data": {
+      "service": "printserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'printserver', 'lpstat', '-p', 'Office-Laser', '-a', 'Office-Laser']",
+      "returncode": 0,
+      "output": "printer Office-Laser is idle.  enabled since Fri Oct  9 14:52:40 2026\nOffice-Laser accepting requests since Fri Oct  9 14:52:40 2026"
+    }
+  },
+  {
+    "at": "2026-10-09T14:54:56.176502+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']",
+      "returncode": 0,
+      "output": "staff"
+    }
+  },
+  {
+    "at": "2026-10-09T14:55:38.757677+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']",
+      "returncode": 0,
+      "output": "staff finance"
+    }
+  },
+  {
+    "at": "2026-10-09T14:55:42.169012+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'delgroup', 'bob', 'finance']",
+      "returncode": 0,
+      "output": ""
+    }
+  },
+  {
+    "at": "2026-10-09T14:55:45.607668+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'net', 'cache', 'flush']",
+      "returncode": 0,
+      "output": ""
+    }
+  },
+  {
+    "at": "2026-10-09T14:55:49.013545+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']",
+      "returncode": 0,
+      "output": "staff"
+    }
+  },
+  {
+    "at": "2026-10-09T14:55:52.422041+00:00",
+    "event": "command",
+    "data": {
+      "service": "fileserver",
+      "command": "['docker', 'compose', 'exec', '-T', 'fileserver', 'id', '-Gn', 'bob']",
+      "returncode": 0,
+      "output": "staff"
+    }
+  }
+]

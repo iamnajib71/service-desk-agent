@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-02",
+    "ticket": "Check AD account sdtest_T143023Z_02: unlock only if locked, verify current state.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:30:44.618418+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 7,
+      "run": "eval-20261009T143023Z-02",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Check AD account sdtest_T143023Z_02: unlock only if locked, verify current state.\"}",
+      "at": "2026-10-09T14:30:44.629566+00:00"
+    },
+    {
+      "seq": 8,
+      "run": "eval-20261009T143023Z-02",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:30:44.642215+00:00"
+    },
+    {
+      "seq": 9,
+      "run": "eval-20261009T143023Z-02",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect AD account state\\\", \\\"reflection\\\": \\\"Need current state\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_02\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:45.914362+00:00"
+    },
+    {
+      "seq": 10,
+      "run": "eval-20261009T143023Z-02",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect AD account state\\\", \\\"reflection\\\": \\\"Need current state\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_02\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:47.272753+00:00"
+    },
+    {
+      "seq": 11,
+      "run": "eval-20261009T143023Z-02",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect AD account state\\\", \\\"reflection\\\": \\\"Need current state\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"sdtest_T143023Z_02\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:30:48.938194+00:00"
+    },
+    {
+      "seq": 12,
+      "run": "eval-20261009T143023Z-02",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:30:50.963742+00:00"
+    }
+  ]
+}

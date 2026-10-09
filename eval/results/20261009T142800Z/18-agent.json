@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": "eval-20261009T142800Z-18",
+    "ticket": "I cannot log in. Unlock my account please. No username or identity verification provided.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:29:19.158193+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 51,
+      "run": "eval-20261009T142800Z-18",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"I cannot log in. Unlock my account please. No username or identity verification provided.\"}",
+      "at": "2026-10-09T14:29:19.174739+00:00"
+    },
+    {
+      "seq": 52,
+      "run": "eval-20261009T142800Z-18",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:29:19.186339+00:00"
+    },
+    {
+      "seq": 53,
+      "run": "eval-20261009T142800Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Verify user identity\\\", \\\"reflection\\\": \\\"No username or identity verification provided\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:29:20.258363+00:00"
+    },
+    {
+      "seq": 54,
+      "run": "eval-20261009T142800Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect current state\\\", \\\"reflection\\\": \\\"Need current user state\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_groups\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:29:21.340848+00:00"
+    },
+    {
+      "seq": 55,
+      "run": "eval-20261009T142800Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Inspect current state\\\", \\\"reflection\\\": \\\"Need current user state\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:29:22.912626+00:00"
+    },
+    {
+      "seq": 56,
+      "run": "eval-20261009T142800Z-18",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:29:24.932643+00:00"
+    }
+  ]
+}

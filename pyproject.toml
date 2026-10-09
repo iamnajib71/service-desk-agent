@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "service-desk-agent"
+version = "1.0.0"
+description = "Local AI service desk agent with approvals and recoverable homelab tools"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+desk-agent = "desk_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["desk_agent*"]
+

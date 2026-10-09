@@ -1,0 +1,22 @@
+# Execution and recovery contract
+
+The local model selects one next tool and explains its plan/reflection. A second schema-constrained call produces that tool's exact typed arguments. A separate Python validator checks required fields, types, unknown fields and target allow-lists before an adapter can run. Model output never becomes a shell command. All shell fragments are fixed source; validated targets are passed as positional arguments.
+
+A small deterministic scheduler narrows the available service tools by explicit ticket words, binds arguments to named ticket targets, constrains group changes to the requested direction, and suppresses redundant successful calls. Verification reads become available again after a mutation. It also respects explicit read-only and no-resume/no-cancel requests. This is a bounded agent, not an unrestricted general-purpose planner. The model can still choose among remaining actions or escalate; step and retry budgets handle unresolved planning failures.
+
+Each step follows `pending -> running -> done`. SQLite commits the proposed action and idempotency key before approval or execution, and commits the observation before requesting another decision. Working memory is the ordered per-ticket observation history; resolved tickets and local embedding vectors live in the same SQLite database. Retrieval records ticket IDs and cosine scores. The model is asked to cite relevant past fixes; the final record also names retrieved candidates without claiming that each one caused the fix.
+
+Approval records bind the reviewer and decision to an action hash and unique step key. Normal CLI runs pause before password resets, group changes, VPN creation/revocation and cancellation of print jobs. `show`, `approve`/`deny`, and `resume` provide the human CLI workflow. A changed action cannot inherit the previous approval. The evaluation harness has a separate explicitly approved, exact-target fixture callback; it is not a general auto-approval switch.
+
+On interruption, the engine checks the current AD/group/queue/peer state. If the desired state is observed, it completes the checkpoint without repeating the write. Retried mutations also reconcile first. Peer creation is convergent by exact allow-listed name, revocation requires a unique peer, and group/queue changes converge on a desired state. A lost response can therefore be recovered. Each tool call has a timeout, retries have exponential backoff, and the step budget bounds planning. Exhausted retries become an error observation so the model can inspect again, choose another tool or escalate. Model validation retries include correction feedback.
+
+Password reset is not naturally idempotent. Its generated secret is persisted only in ignored `.env`; a remote completion marker is written under `/var/lib/samba/service-desk-agent/` after success. If the process dies between the password change and that marker, the engine pauses for human reconciliation. It never blindly repeats an uncertain reset. This is **convergent recovery, not distributed exactly-once execution**: SQLite and the remote systems have no shared transaction. Concurrent administrators and changed remote state can require review.
+
+An OS file lock prevents two processes executing the same ticket run simultaneously. Independent tickets are intended for a single local operator; the project does not implement distributed resource locking, a tamper-proof audit service, rollback of arbitrary actions, secret vault delivery or production authorization.
+
+`--dry-run` validates and previews every adapter without calling Docker or service HTTP APIs. Dry runs have a distinct mode, cannot become live resumes, and never populate the resolved-ticket store. Chat and embedding inference still run locally.
+
+The LLM's closure is a claim, not a ground-truth test. No-observation closures are blocked; the evaluation harness separately verifies actual service state, original print-job IPP completion/cancellation and cleanup. Model summaries can be inaccurate even when a tool operation succeeds. The repository exposes those summaries in the raw evidence.
+
+Sources: [homelab tests and runbook](https://github.com/iamnajib71/it-support-homelab), [Ollama structured outputs](https://ollama.com/blog/structured-outputs), [Samba administration](https://www.samba.org/samba/docs/current/man-html/samba-tool.8.html), [wg-easy v14 server](https://github.com/wg-easy/wg-easy/blob/v14/src/lib/Server.js), [CUPS command documentation](https://www.cups.org/doc/man-lpstat.html).
+

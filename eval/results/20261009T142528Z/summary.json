@@ -1,0 +1,54 @@
+[
+  {
+    "id": "06",
+    "name": "Finance share starter",
+    "status": "escalated",
+    "success": false,
+    "steps": 2,
+    "retries": 0,
+    "model_retries": 3,
+    "approvals": 1,
+    "cleanup_ok": true,
+    "seconds": 44.73,
+    "evidence": {
+      "status": "escalated"
+    }
+  },
+  {
+    "id": "11",
+    "name": "Paused PDF with waiting job",
+    "status": "resolved",
+    "success": true,
+    "steps": 3,
+    "retries": 0,
+    "model_retries": 0,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 11.1,
+    "evidence": {
+      "Office-PDF": {
+        "queue": "Office-PDF",
+        "enabled": true,
+        "accepting": true,
+        "output": "printer Office-PDF is idle.  enabled since Fri Oct  9 14:26:27 2026\nOffice-PDF accepting requests since Fri Oct  9 14:26:27 2026"
+      },
+      "IPP_original_job": "\"/tmp/agent-job-state.test\":\n    Independent evaluation job-state                                     [PASS]"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Ambiguous locked-out user",
+    "status": "escalated",
+    "success": true,
+    "steps": 0,
+    "retries": 0,
+    "model_retries": 3,
+    "approvals": 0,
+    "cleanup_ok": true,
+    "seconds": 6.02,
+    "evidence": {
+      "status": "escalated",
+      "mutations": 0
+    }
+  }
+]

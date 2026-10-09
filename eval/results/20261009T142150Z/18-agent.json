@@ -1,0 +1,57 @@
+{
+  "run": {
+    "id": "eval-20261009T142150Z-18",
+    "ticket": "I cannot log in. Unlock my account please. No username or identity verification provided.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:23:52.725685+00:00"
+  },
+  "steps": [],
+  "audit": [
+    {
+      "seq": 130,
+      "run": "eval-20261009T142150Z-18",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"I cannot log in. Unlock my account please. No username or identity verification provided.\"}",
+      "at": "2026-10-09T14:23:52.748307+00:00"
+    },
+    {
+      "seq": 131,
+      "run": "eval-20261009T142150Z-18",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:23:52.760970+00:00"
+    },
+    {
+      "seq": 132,
+      "run": "eval-20261009T142150Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Verify user identity\\\", \\\"reflection\\\": \\\"No username or identity verification provided\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}\"}",
+      "at": "2026-10-09T14:23:54.833291+00:00"
+    },
+    {
+      "seq": 133,
+      "run": "eval-20261009T142150Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Verify user identity\\\", \\\"reflection\\\": \\\"No username or identity verification provided\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}\"}",
+      "at": "2026-10-09T14:23:56.806784+00:00"
+    },
+    {
+      "seq": 134,
+      "run": "eval-20261009T142150Z-18",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Verify user identity\\\", \\\"reflection\\\": \\\"No username or identity verification provided\\\", \\\"action\\\": {\\\"tool\\\": \\\"ad_lookup\\\", \\\"args\\\": {\\\"user\\\": \\\"unknown\\\"}}}\"}",
+      "at": "2026-10-09T14:23:58.840017+00:00"
+    },
+    {
+      "seq": 135,
+      "run": "eval-20261009T142150Z-18",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:24:00.870542+00:00"
+    }
+  ]
+}

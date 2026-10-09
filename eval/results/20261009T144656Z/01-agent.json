@@ -1,0 +1,197 @@
+{
+  "run": {
+    "id": "eval-20261009T144656Z-01",
+    "ticket": "Fictional user sdtest_t144656z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.",
+    "mode": "live",
+    "status": "resolved",
+    "budget": 12,
+    "memory": "[]",
+    "final": "sdtest_t144656z_01 account is unlocked and ready for next-logon change.",
+    "started": "2026-10-09T14:47:03.982144+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T144656Z-01",
+      "n": 1,
+      "key": "583f1fb115071f3d623f3ea717fbd146df3012a706d50a9dbe6f41ff62a0a37a",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t144656z_01 account\",\"reflection\":\"Check lockoutTime and account status\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"134360308230586590\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"}"
+    },
+    {
+      "run": "eval-20261009T144656Z-01",
+      "n": 2,
+      "key": "a7b6312921e41f4cd950e77a510d35b10d6af42232bd84aea561f9f7179e874d",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_unlock\"},\"kind\":\"act\",\"plan\":\"Unlock sdtest_t144656z_01 account\",\"reflection\":\"Reset lockoutTime to 0\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"}"
+    },
+    {
+      "run": "eval-20261009T144656Z-01",
+      "n": 3,
+      "key": "fb374eb1b2336fd69b9582c9f0d222e8748c74b9cd1a21abdbb4fd3c5e1caf80",
+      "decision": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify account status after unlock\",\"reflection\":\"Check lockoutTime is 0\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"}"
+    }
+  ],
+  "audit": [
+    {
+      "seq": 1,
+      "run": "eval-20261009T144656Z-01",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Fictional user sdtest_t144656z_01 has confirmed identity and is locked out of AD. Look up the account, unlock it, verify lockoutTime is 0.\"}",
+      "at": "2026-10-09T14:47:04.008115+00:00"
+    },
+    {
+      "seq": 2,
+      "run": "eval-20261009T144656Z-01",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:47:04.019711+00:00"
+    },
+    {
+      "seq": 3,
+      "run": "eval-20261009T144656Z-01",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t144656z_01 account\",\"reflection\":\"Check lockoutTime and account status\"}",
+      "at": "2026-10-09T14:47:05.251461+00:00"
+    },
+    {
+      "seq": 4,
+      "run": "eval-20261009T144656Z-01",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify current state of sdtest_t144656z_01 account\",\"reflection\":\"Check lockoutTime and account status\"},\"key\":\"583f1fb115071f3d623f3ea717fbd146df3012a706d50a9dbe6f41ff62a0a37a\",\"step\":1}",
+      "at": "2026-10-09T14:47:05.273106+00:00"
+    },
+    {
+      "seq": 5,
+      "run": "eval-20261009T144656Z-01",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"attempt\":1,\"key\":\"583f1fb115071f3d623f3ea717fbd146df3012a706d50a9dbe6f41ff62a0a37a\",\"step\":1}",
+      "at": "2026-10-09T14:47:05.296635+00:00"
+    },
+    {
+      "seq": 6,
+      "run": "eval-20261009T144656Z-01",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t144656z_01']\",\"output\":\"dn: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t144656z_01\\ninstanceType: 4\\nwhenCreated: 20261009144702.0Z\\nuSNCreated: 5628\\nname: sdtest_t144656z_01\\nobjectGUID: 712631ba-2e91-49f3-9c6d-7b9591c3b538\\ncodePage: 0\\ncountryCode: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1116\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t144656z_01\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t144656z_01@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134360308224172370\\nuserAccountControl: 512\\nbadPwdCount: 5\\nbadPasswordTime: 134360308230586590\\nlockoutTime: 134360308230586590\\nwhenChanged: 20261009144703.0Z\\nuSNChanged: 5631\\ndistinguishedName: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:47:05.935923+00:00"
+    },
+    {
+      "seq": 7,
+      "run": "eval-20261009T144656Z-01",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"134360308230586590\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"},\"step\":1}",
+      "at": "2026-10-09T14:47:05.958385+00:00"
+    },
+    {
+      "seq": 8,
+      "run": "eval-20261009T144656Z-01",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_unlock\"},\"kind\":\"act\",\"plan\":\"Unlock sdtest_t144656z_01 account\",\"reflection\":\"Reset lockoutTime to 0\"}",
+      "at": "2026-10-09T14:47:06.994167+00:00"
+    },
+    {
+      "seq": 9,
+      "run": "eval-20261009T144656Z-01",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_unlock\"},\"kind\":\"act\",\"plan\":\"Unlock sdtest_t144656z_01 account\",\"reflection\":\"Reset lockoutTime to 0\"},\"key\":\"a7b6312921e41f4cd950e77a510d35b10d6af42232bd84aea561f9f7179e874d\",\"step\":2}",
+      "at": "2026-10-09T14:47:07.019129+00:00"
+    },
+    {
+      "seq": 10,
+      "run": "eval-20261009T144656Z-01",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_unlock\"},\"attempt\":1,\"key\":\"a7b6312921e41f4cd950e77a510d35b10d6af42232bd84aea561f9f7179e874d\",\"step\":2}",
+      "at": "2026-10-09T14:47:07.043607+00:00"
+    },
+    {
+      "seq": 11,
+      "run": "eval-20261009T144656Z-01",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t144656z_01']\",\"output\":\"dn: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t144656z_01\\ninstanceType: 4\\nwhenCreated: 20261009144702.0Z\\nuSNCreated: 5628\\nname: sdtest_t144656z_01\\nobjectGUID: 712631ba-2e91-49f3-9c6d-7b9591c3b538\\ncodePage: 0\\ncountryCode: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1116\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t144656z_01\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t144656z_01@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134360308224172370\\nuserAccountControl: 512\\nbadPwdCount: 5\\nbadPasswordTime: 134360308230586590\\nlockoutTime: 134360308230586590\\nwhenChanged: 20261009144703.0Z\\nuSNChanged: 5631\\ndistinguishedName: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:47:07.672614+00:00"
+    },
+    {
+      "seq": 12,
+      "run": "eval-20261009T144656Z-01",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'unlock', 'sdtest_t144656z_01']\",\"output\":\"\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:47:08.340869+00:00"
+    },
+    {
+      "seq": 13,
+      "run": "eval-20261009T144656Z-01",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t144656z_01']\",\"output\":\"dn: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t144656z_01\\ninstanceType: 4\\nwhenCreated: 20261009144702.0Z\\nuSNCreated: 5628\\nname: sdtest_t144656z_01\\nobjectGUID: 712631ba-2e91-49f3-9c6d-7b9591c3b538\\ncodePage: 0\\ncountryCode: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1116\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t144656z_01\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t144656z_01@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134360308224172370\\nuserAccountControl: 512\\nbadPasswordTime: 134360308230586590\\nlockoutTime: 0\\nbadPwdCount: 0\\nwhenChanged: 20261009144708.0Z\\nuSNChanged: 5632\\ndistinguishedName: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:47:09.012712+00:00"
+    },
+    {
+      "seq": 14,
+      "run": "eval-20261009T144656Z-01",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"},\"step\":2}",
+      "at": "2026-10-09T14:47:09.056936+00:00"
+    },
+    {
+      "seq": 15,
+      "run": "eval-20261009T144656Z-01",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Unverified closure: After ad_unlock, call ad_lookup for the same target and verify the desired state before resolve.\"}",
+      "at": "2026-10-09T14:47:10.052189+00:00"
+    },
+    {
+      "seq": 16,
+      "run": "eval-20261009T144656Z-01",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify account status after unlock\",\"reflection\":\"Check lockoutTime is 0\"}",
+      "at": "2026-10-09T14:47:11.427552+00:00"
+    },
+    {
+      "seq": 17,
+      "run": "eval-20261009T144656Z-01",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"kind\":\"act\",\"plan\":\"Verify account status after unlock\",\"reflection\":\"Check lockoutTime is 0\"},\"key\":\"fb374eb1b2336fd69b9582c9f0d222e8748c74b9cd1a21abdbb4fd3c5e1caf80\",\"step\":3}",
+      "at": "2026-10-09T14:47:11.464382+00:00"
+    },
+    {
+      "seq": 18,
+      "run": "eval-20261009T144656Z-01",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{\"user\":\"sdtest_t144656z_01\"},\"tool\":\"ad_lookup\"},\"attempt\":1,\"key\":\"fb374eb1b2336fd69b9582c9f0d222e8748c74b9cd1a21abdbb4fd3c5e1caf80\",\"step\":3}",
+      "at": "2026-10-09T14:47:11.513208+00:00"
+    },
+    {
+      "seq": 19,
+      "run": "eval-20261009T144656Z-01",
+      "event": "command",
+      "data": "{\"command\":\"['docker', 'compose', 'exec', '-T', 'directory', 'samba-tool', 'user', 'show', 'sdtest_t144656z_01']\",\"output\":\"dn: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\\nobjectClass: top\\nobjectClass: person\\nobjectClass: organizationalPerson\\nobjectClass: user\\ncn: sdtest_t144656z_01\\ninstanceType: 4\\nwhenCreated: 20261009144702.0Z\\nuSNCreated: 5628\\nname: sdtest_t144656z_01\\nobjectGUID: 712631ba-2e91-49f3-9c6d-7b9591c3b538\\ncodePage: 0\\ncountryCode: 0\\nlastLogoff: 0\\nlastLogon: 0\\nprimaryGroupID: 513\\nobjectSid: S-1-5-21-2457100399-2473219127-34525402-1116\\naccountExpires: 9223372036854775807\\nlogonCount: 0\\nsAMAccountName: sdtest_t144656z_01\\nsAMAccountType: 805306368\\nuserPrincipalName: sdtest_t144656z_01@itops.lab\\nobjectCategory: CN=Person,CN=Schema,CN=Configuration,DC=itops,DC=lab\\npwdLastSet: 134360308224172370\\nuserAccountControl: 512\\nbadPasswordTime: 134360308230586590\\nlockoutTime: 0\\nbadPwdCount: 0\\nwhenChanged: 20261009144708.0Z\\nuSNChanged: 5632\\ndistinguishedName: CN=sdtest_t144656z_01,OU=Staff,DC=itops,DC=lab\",\"returncode\":0,\"service\":\"directory\"}",
+      "at": "2026-10-09T14:47:12.185380+00:00"
+    },
+    {
+      "seq": 20,
+      "run": "eval-20261009T144656Z-01",
+      "event": "observe",
+      "data": "{\"result\":{\"disabled\":false,\"exists\":true,\"lockoutTime\":\"0\",\"pwdLastSet\":\"134360308224172370\",\"user\":\"sdtest_t144656z_01\"},\"step\":3}",
+      "at": "2026-10-09T14:47:12.229669+00:00"
+    },
+    {
+      "seq": 21,
+      "run": "eval-20261009T144656Z-01",
+      "event": "reflection",
+      "data": "{\"kind\":\"resolve\",\"plan\":\"Unlock successful\",\"reflection\":\"Verified lockoutTime is 0\",\"summary\":\"sdtest_t144656z_01 account is unlocked and ready for next-logon change.\"}",
+      "at": "2026-10-09T14:47:13.206722+00:00"
+    },
+    {
+      "seq": 22,
+      "run": "eval-20261009T144656Z-01",
+      "event": "resolved",
+      "data": "{\"summary\":\"sdtest_t144656z_01 account is unlocked and ready for next-logon change.\"}",
+      "at": "2026-10-09T14:47:13.382087+00:00"
+    }
+  ]
+}

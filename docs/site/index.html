@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Service Desk Agent · Live evidence replay</title>
+  <style>
+    :root{color-scheme:dark;--bg:#09111c;--panel:#111e2d;--line:#263b51;--text:#e6eef7;--muted:#9aafc5;--mint:#67ebc0;--red:#ffa58d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}
+    a{color:var(--mint)}main{max-width:1200px;margin:auto;padding:44px 28px}nav{display:flex;justify-content:space-between;gap:20px;color:var(--mint);font-size:13px;letter-spacing:2px}
+    h1{font-size:clamp(38px,6vw,70px);line-height:1.08;letter-spacing:-2px;margin:40px 0 20px;max-width:900px}h2{margin:0;font-size:23px}p{color:var(--muted);max-width:850px}.lead{font-size:20px}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:30px 0}.metric,.card{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:22px}.metric b{display:block;font-size:31px;color:var(--mint)}.metric span{font-size:13px;color:var(--muted)}
+    .workbench{display:grid;grid-template-columns:300px 1fr;gap:16px}.scenarios{display:flex;flex-direction:column;gap:7px;max-height:670px;overflow:auto}.scenarios button{border:1px solid var(--line);padding:12px;text-align:left;color:var(--text);background:var(--bg);border-radius:7px;cursor:pointer;font:inherit;font-size:14px}.scenarios button:hover,.scenarios button[aria-pressed=true]{border-color:var(--mint);background:#143c37}
+    .tag{display:inline-block;font-size:11px;letter-spacing:1px;color:var(--mint);background:#173f36;padding:2px 8px;border-radius:4px;margin-right:9px}.fail{color:var(--red);background:#4a2826}.ticket{border-left:3px solid var(--mint);padding:10px 18px;margin:18px 0}.steps{display:flex;flex-direction:column;gap:10px}.step{border:1px solid var(--line);padding:15px;border-radius:8px}.step small{color:var(--muted)}code,pre{font:13px/1.6 Consolas,monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);padding:14px;border-radius:6px;max-height:210px;overflow:auto}summary{cursor:pointer;color:var(--mint)}.empty{color:var(--muted)}.demo{max-width:100%;border:1px solid var(--line);border-radius:12px;margin-top:30px}footer{padding-top:32px;color:var(--muted);font-size:14px}
+    @media(max-width:760px){main{padding:24px 18px}.metrics{grid-template-columns:repeat(2,1fr)}.workbench{grid-template-columns:1fr}.scenarios{max-height:220px}h1{letter-spacing:-1px}.card{padding:16px}}
+  </style>
+</head>
+<body><main>
+  <nav><span>NAZMUL HASSAN / SERVICE DESK AGENT</span><a href="https://github.com/iamnajib71/service-desk-agent">GitHub ↗</a></nav>
+  <h1>Real support tickets.<br>Observable AI decisions.</h1>
+  <p class="lead">Local models, bounded tools, human approvals and recovery after a process dies.</p>
+  <p>This live demo is a <strong>read-only evidence replay</strong> of actual fictional homelab tickets. The executable agent runs locally beside Docker and Ollama. Select a scenario to inspect its real actions, approvals and independently checked outcome.</p>
+  <div id="metrics" class="metrics" aria-label="Evaluation results"></div>
+  <div class="workbench">
+    <aside class="card"><h2>20 scenarios</h2><p>Select a recorded ticket.</p><div id="scenarios" class="scenarios"></div></aside>
+    <section class="card" aria-live="polite"><div id="detail">Loading recorded evidence…</div></section>
+  </div>
+  <h2 style="margin-top:36px">Approval → process death → recovered repair</h2>
+  <p>The real CLI recording kills the process after the Finance group change, then resumes without repeating that write. Full timestamps and raw audit evidence are in the repository.</p>
+  <img class="demo" src="demo.gif" alt="Recorded local agent run with human approval, deliberate process death and verified Finance access">
+  <footer>Built by <a href="https://www.linkedin.com/in/iamnajib71">Nazmul Hassan</a> · <a href="https://github.com/iamnajib71/service-desk-agent/tree/main/eval/results">Raw evidence</a> · MIT licence. No service credentials, real users or runnable administration endpoints are hosted.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
+fetch('data.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(data=>{
+  const rows=data.scenarios, passed=rows.filter(s=>s.result.success).length;
+  [['Expected outcomes',passed+'/'+rows.length],['Tool steps',rows.reduce((a,s)=>a+s.result.steps,0)],['Action approvals',rows.reduce((a,s)=>a+s.result.approvals,0)],['Local model',data.model]].forEach(([name,value])=>{
+    const m=el('div',undefined,'metric');m.append(el('b',String(value)),el('span',name));$('metrics').append(m);
+  });
+  const buttons=[];
+  function select(index){
+    const s=rows[index], r=s.result;buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));$('detail').replaceChildren();
+    const badge=el('span',r.success?'VERIFIED OUTCOME':'FAILED OUTCOME','tag'+(r.success?'':' fail'));
+    $('detail').append(badge,el('h2',s.id+' · '+s.name),el('div',s.ticket,'ticket'),el('p',`${r.steps} steps · ${r.retries} tool retries · ${r.model_retries} model retries · ${r.approvals} approvals · ${r.seconds}s`));
+    const steps=el('div',undefined,'steps');
+    s.steps.forEach((step,i)=>{const box=el('div',undefined,'step');box.append(el('strong',`${i+1}. ${step.action.tool}`),el('pre',JSON.stringify(step.action.args,null,2)));if(step.approval)box.append(el('small','HUMAN APPROVAL: '+step.approval));box.append(el('p',step.reflection));const d=el('details');d.append(el('summary','Observed tool result'),el('pre',JSON.stringify(step.result,null,2)));box.append(d);steps.append(box)});
+    if(!s.steps.length)steps.append(el('p','No tools executed. See the recorded final status and independent check.','empty'));
+    $('detail').append(steps,el('p','Recorded agent status: '+r.status),el('p','Model summary: '+s.final));
+    const d=el('details');d.append(el('summary','Independent end-state evidence'),el('pre',JSON.stringify(r.evidence,null,2)));$('detail').append(d);
+  }
+  rows.forEach((s,i)=>{const b=el('button',`${s.result.success?'✓':'×'} ${s.id} ${s.name}`);b.type='button';b.addEventListener('click',()=>select(i));buttons.push(b);$('scenarios').append(b)});select(0);
+}).catch(error=>{$('detail').textContent='Evidence could not load. Serve this folder with python -m http.server, or open the hosted replay. '+error.message});
+</script>
+</body></html>
+

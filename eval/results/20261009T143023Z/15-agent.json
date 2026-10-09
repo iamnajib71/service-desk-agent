@@ -1,0 +1,102 @@
+{
+  "run": {
+    "id": "eval-20261009T143023Z-15",
+    "ticket": "Lost lab laptop has confirmed WireGuard peer agent-eval-T143023Z-15. Owner approved revoking only that peer. List peers, revoke by exact name, verify absent.",
+    "mode": "live",
+    "status": "escalated",
+    "budget": 12,
+    "memory": "[]",
+    "final": "Model unavailable or invalid structured output after retries",
+    "started": "2026-10-09T14:35:09.495289+00:00"
+  },
+  "steps": [
+    {
+      "run": "eval-20261009T143023Z-15",
+      "n": 1,
+      "key": "e8d0f37d5c60abdf18036d6b6c234e1b00b462d47796912dba6413a3f1dc1f7a",
+      "decision": "{\"action\":{\"args\":{},\"tool\":\"wg_list\"},\"kind\":\"act\",\"plan\":\"List current WireGuard peers\",\"reflection\":\"Verify current state before revoking peer\"}",
+      "state": "done",
+      "attempts": 1,
+      "result": "{\"peers\":[{\"address\":\"10.8.0.2\",\"enabled\":true,\"id\":\"ebd2e2ff-e37a-47f7-ad3d-2d95e73cc352\",\"name\":\"alice-laptop\"},{\"address\":\"10.8.0.3\",\"enabled\":true,\"id\":\"2d5b034c-58f1-49cc-b051-8816eefe6cef\",\"name\":\"bob-laptop\"},{\"address\":\"10.8.0.4\",\"enabled\":true,\"id\":\"f0b9754e-737d-4666-9db3-590735541772\",\"name\":\"carol-phone\"},{\"address\":\"10.8.0.5\",\"enabled\":true,\"id\":\"e2c16c9c-0bcd-4ceb-b24e-ced63bc4d581\",\"name\":\"agent-eval-T143023Z-15\"}]}"
+    }
+  ],
+  "audit": [
+    {
+      "seq": 198,
+      "run": "eval-20261009T143023Z-15",
+      "event": "ticket",
+      "data": "{\"budget\":12,\"mode\":\"live\",\"ticket\":\"Lost lab laptop has confirmed WireGuard peer agent-eval-T143023Z-15. Owner approved revoking only that peer. List peers, revoke by exact name, verify absent.\"}",
+      "at": "2026-10-09T14:35:09.902629+00:00"
+    },
+    {
+      "seq": 199,
+      "run": "eval-20261009T143023Z-15",
+      "event": "memory_search",
+      "data": "{\"citations\":[]}",
+      "at": "2026-10-09T14:35:09.915169+00:00"
+    },
+    {
+      "seq": 200,
+      "run": "eval-20261009T143023Z-15",
+      "event": "reflection",
+      "data": "{\"action\":{\"args\":{},\"tool\":\"wg_list\"},\"kind\":\"act\",\"plan\":\"List current WireGuard peers\",\"reflection\":\"Verify current state before revoking peer\"}",
+      "at": "2026-10-09T14:35:11.105327+00:00"
+    },
+    {
+      "seq": 201,
+      "run": "eval-20261009T143023Z-15",
+      "event": "plan",
+      "data": "{\"decision\":{\"action\":{\"args\":{},\"tool\":\"wg_list\"},\"kind\":\"act\",\"plan\":\"List current WireGuard peers\",\"reflection\":\"Verify current state before revoking peer\"},\"key\":\"e8d0f37d5c60abdf18036d6b6c234e1b00b462d47796912dba6413a3f1dc1f7a\",\"step\":1}",
+      "at": "2026-10-09T14:35:11.134319+00:00"
+    },
+    {
+      "seq": 202,
+      "run": "eval-20261009T143023Z-15",
+      "event": "act",
+      "data": "{\"action\":{\"args\":{},\"tool\":\"wg_list\"},\"attempt\":1,\"key\":\"e8d0f37d5c60abdf18036d6b6c234e1b00b462d47796912dba6413a3f1dc1f7a\",\"step\":1}",
+      "at": "2026-10-09T14:35:11.158707+00:00"
+    },
+    {
+      "seq": 203,
+      "run": "eval-20261009T143023Z-15",
+      "event": "http",
+      "data": "{\"data\":null,\"method\":\"GET\",\"path\":\"wireguard/client\",\"result\":[{\"address\":\"10.8.0.2\",\"enabled\":true,\"id\":\"ebd2e2ff-e37a-47f7-ad3d-2d95e73cc352\",\"name\":\"alice-laptop\"},{\"address\":\"10.8.0.3\",\"enabled\":true,\"id\":\"2d5b034c-58f1-49cc-b051-8816eefe6cef\",\"name\":\"bob-laptop\"},{\"address\":\"10.8.0.4\",\"enabled\":true,\"id\":\"f0b9754e-737d-4666-9db3-590735541772\",\"name\":\"carol-phone\"},{\"address\":\"10.8.0.5\",\"enabled\":true,\"id\":\"e2c16c9c-0bcd-4ceb-b24e-ced63bc4d581\",\"name\":\"agent-eval-T143023Z-15\"}],\"service\":\"wg-easy\"}",
+      "at": "2026-10-09T14:35:11.429203+00:00"
+    },
+    {
+      "seq": 204,
+      "run": "eval-20261009T143023Z-15",
+      "event": "observe",
+      "data": "{\"result\":{\"peers\":[{\"address\":\"10.8.0.2\",\"enabled\":true,\"id\":\"ebd2e2ff-e37a-47f7-ad3d-2d95e73cc352\",\"name\":\"alice-laptop\"},{\"address\":\"10.8.0.3\",\"enabled\":true,\"id\":\"2d5b034c-58f1-49cc-b051-8816eefe6cef\",\"name\":\"bob-laptop\"},{\"address\":\"10.8.0.4\",\"enabled\":true,\"id\":\"f0b9754e-737d-4666-9db3-590735541772\",\"name\":\"carol-phone\"},{\"address\":\"10.8.0.5\",\"enabled\":true,\"id\":\"e2c16c9c-0bcd-4ceb-b24e-ced63bc4d581\",\"name\":\"agent-eval-T143023Z-15\"}]},\"step\":1}",
+      "at": "2026-10-09T14:35:11.453079+00:00"
+    },
+    {
+      "seq": 205,
+      "run": "eval-20261009T143023Z-15",
+      "event": "model_retry",
+      "data": "{\"attempt\":1,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Revoke WireGuard peer by exact name\\\", \\\"reflection\\\": \\\"Verify revocation success\\\", \\\"action\\\": {\\\"tool\\\": \\\"wg_revoke\\\", \\\"args\\\": {\\\"name\\\": \\\"agent-eval-T143023Z-15\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:35:12.468464+00:00"
+    },
+    {
+      "seq": 206,
+      "run": "eval-20261009T143023Z-15",
+      "event": "model_retry",
+      "data": "{\"attempt\":2,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Revoke WireGuard peer by exact name\\\", \\\"reflection\\\": \\\"Verify revocation success\\\", \\\"action\\\": {\\\"tool\\\": \\\"wg_revoke\\\", \\\"args\\\": {\\\"name\\\": \\\"agent-eval-T143023Z-15\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:35:13.929104+00:00"
+    },
+    {
+      "seq": 207,
+      "run": "eval-20261009T143023Z-15",
+      "event": "model_retry",
+      "data": "{\"attempt\":3,\"error\":\"Invalid decision: {\\\"kind\\\": \\\"act\\\", \\\"plan\\\": \\\"Revoke WireGuard peer by exact name\\\", \\\"reflection\\\": \\\"Verify revocation success\\\", \\\"action\\\": {\\\"tool\\\": \\\"wg_revoke\\\", \\\"args\\\": {\\\"name\\\": \\\"agent-eval-T143023Z-15\\\"}}}. Follow exact required fields and target allow-lists.\"}",
+      "at": "2026-10-09T14:35:15.840255+00:00"
+    },
+    {
+      "seq": 208,
+      "run": "eval-20261009T143023Z-15",
+      "event": "escalated",
+      "data": "{\"summary\":\"Model unavailable or invalid structured output after retries\"}",
+      "at": "2026-10-09T14:35:18.039251+00:00"
+    }
+  ]
+}
