@@ -8,7 +8,7 @@ A local AI agent handles fictional IT support tickets with bounded tools, human 
 
 **[Live demo: evidence replay](https://iamnajib71.github.io/service-desk-agent/)** · **The agent runs locally.** The hosted replay contains only recorded fictional homelab data and cannot administer services.
 
-## What it shows recruiters
+## Technical capabilities
 
 - **AI engineering:** plan → act → observe → reflect with two schema-constrained local-model calls, strict tool validation, per-ticket memory and retrieval over resolved tickets using SQLite and local embeddings.
 - **Reliable automation:** timeouts, exponential backoff, step budgets, persisted action approvals and recovery after a real process dies between a remote change and its completion checkpoint.
