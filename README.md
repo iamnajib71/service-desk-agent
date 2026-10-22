@@ -1,32 +1,37 @@
-A local AI agent handles fictional IT support tickets with bounded tools, human approvals, memory and crash recovery.
+# Service Desk Agent
 
-<!-- project-overview:start -->
-## Project overview
+I built a local support agent that investigates fictional office tickets, asks for approval before sensitive changes and checks service state when recovering from an interruption.
 
-| Area | What to look for |
+![Real Finance repair, approval and crash recovery](docs/demo.gif)
+
+[![CI](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml) · [MIT licence](LICENSE)
+
+## At a glance
+
+| Area | Evidence-backed summary |
 | --- | --- |
-| **Problem addressed** | Automated support changes need exact target scope, human approval and recovery if the agent process fails after making a change. |
-| **Implemented work** | Built a local tool-using agent with validated adapters, persisted approvals, SQLite memory/checkpoints and outcome verification. Recorded 18/20 expected outcomes and a real crash-recovery demonstration. |
-| **Skills demonstrated** | Python, local models, schema validation, bounded automation, approval workflows, state persistence, recovery testing and service troubleshooting. |
-| **Demo** | [Watch approval, process death and recovery](docs/demo.gif), or use the [read-only evidence replay](https://iamnajib71.github.io/service-desk-agent/). |
-| **How to use it** | [Quick start](#quick-start-on-windows): start the homelab and local models, run the read-only queue-status ticket, then inspect its saved run. Expected: actual tool observations and an auditable ticket state. |
-| **Verification** | [Results and evidence](#results-and-evidence) retain unsuccessful cases as well as successes. The hosted replay cannot administer services; mutations require the documented lab approval scope. |
+| **The problem** | In this simulated office, a support operator repeats account, file-access and printing checks; a tool crash after changing access can leave the operator unsure whether retrying will repeat the change, costing investigation time. |
+| **What I built** | I built a Python agent with local LLMs, bounded service tools, action-specific human approval and SQLite checkpoints. I independently checked repairs, safe escalations and recovery against fictional homelab tickets. |
+| **Results** | [18/20 expected outcomes (90%), including safe escalations; 15/17 repair/read outcomes (88.2%)](eval/results/20261009T145821Z). [26 unit tests passed from the public clone](eval/results/clean-clone/github-verification.json). Failed scenarios remain published. |
+| **Skills shown** | Python, service desk automation, local LLMs, SQLite, API integration, approval workflows, recovery, test automation and evaluation. |
+| **Relevant roles** | Application Support Analyst, Service Desk Analyst, Junior Automation Engineer, QA Analyst. |
+| **How it was built** | Designed, specified and reviewed by me; built with Codex as my coding agent (vibe coding). Verification and its limits are linked below. |
+| **Try it / evidence** | [Hosted evidence replay](https://iamnajib71.github.io/service-desk-agent/) · [Quick start](#quick-start-on-windows) · [Evaluation protocol](docs/evaluation.md) · [Raw results](eval/results/) |
 
-<!-- project-overview:end -->
+## What I did, step by step
 
-![Real Finance repair: approval, injected process death and recovery](docs/demo.gif)
+1. Defined fictional account, share, printer and VPN targets and documented the [execution boundaries](docs/architecture.md).
+2. Built typed tool adapters so model suggestions are validated before a service operation can execute.
+3. Added saved working memory and approvals that bind the reviewer to the exact proposed change.
+4. Persisted checkpoints and reconciled current service state before replaying interrupted work.
+5. Ran the [live fixture evaluation](docs/evaluation.md), independently checked end states and restored each fixture.
+6. Killed the process after a real group change, resumed it, checked for duplicate writes and repeated the quick start from a [clean public clone](eval/results/clean-clone/github-verification.json).
 
-[![CI](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml)
-[![MIT](https://img.shields.io/badge/licence-MIT-67ebc0)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)](https://www.python.org/)
+## Problems I hit and how I solved them
 
-**[Live demo: evidence replay](https://iamnajib71.github.io/service-desk-agent/)** · **The agent runs locally.** The hosted replay contains only recorded fictional homelab data and cannot administer services.
-
-## Technical capabilities
-
-- **AI engineering:** plan → act → observe → reflect with two schema-constrained local-model calls, strict tool validation, per-ticket memory and retrieval over resolved tickets using SQLite and local embeddings.
-- **Reliable automation:** timeouts, exponential backoff, step budgets, persisted action approvals and recovery after a real process dies between a remote change and its completion checkpoint.
-- **IT support judgement:** diagnose AD, standalone Samba shares, CUPS and WireGuard; verify outcomes independently; require human approval for risky changes and escalate ambiguous requests.
+- **A crash can happen after the remote change but before its checkpoint:** recovery reads the current group state before deciding whether to write again. The [recorded process-death demo](eval/results/demo-20261009T145447Z) verifies the repair without a duplicate group write.
+- **The model failed removal workflows:** the directory removal lacked final verification and the file-share removal was skipped. I retained both as failures and used independent assertions instead of trusting a closure summary. [Results and raw logs](eval/results/20261009T145821Z).
+- **Model arguments and summaries can be wrong:** typed validation and closure guards constrain execution, while the evaluation checks the actual service state. Inaccurate summaries remain visible. [Execution contract](docs/architecture.md).
 
 ## Architecture
 
@@ -178,4 +183,6 @@ scripts/         Evidence-to-replay rendering and pre-publication secret scan
 - The suite is 20 scripted tickets on one machine, with named targets and known fixture approval. It is not a general benchmark. The hosted live demo only replays recorded fictional evidence; it cannot execute the agent.
 - Private test passwords are stored locally in ignored `.env`, not a production vault. Docker access is privileged. The user interface is a CLI approval workflow; there is no multi-user approval server.
 
-Built by **Nazmul Hassan** · [LinkedIn](https://www.linkedin.com/in/iamnajib71) · [GitHub](https://github.com/iamnajib71)
+## Built by Nazmul Hassan
+
+[LinkedIn](https://www.linkedin.com/in/iamnajib71) · [GitHub](https://github.com/iamnajib71)
