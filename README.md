@@ -1,5 +1,19 @@
 A local AI agent handles fictional IT support tickets with bounded tools, human approvals, memory and crash recovery.
 
+<!-- project-overview:start -->
+## Project overview
+
+| Area | What to look for |
+| --- | --- |
+| **Problem addressed** | Automated support changes need exact target scope, human approval and recovery if the agent process fails after making a change. |
+| **Implemented work** | Built a local tool-using agent with validated adapters, persisted approvals, SQLite memory/checkpoints and outcome verification. Recorded 18/20 expected outcomes and a real crash-recovery demonstration. |
+| **Skills demonstrated** | Python, local models, schema validation, bounded automation, approval workflows, state persistence, recovery testing and service troubleshooting. |
+| **Demo** | [Watch approval, process death and recovery](docs/demo.gif), or use the [read-only evidence replay](https://iamnajib71.github.io/service-desk-agent/). |
+| **How to use it** | [Quick start](#quick-start-on-windows): start the homelab and local models, run the read-only queue-status ticket, then inspect its saved run. Expected: actual tool observations and an auditable ticket state. |
+| **Verification** | [Results and evidence](#results-and-evidence) retain unsuccessful cases as well as successes. The hosted replay cannot administer services; mutations require the documented lab approval scope. |
+
+<!-- project-overview:end -->
+
 ![Real Finance repair: approval, injected process death and recovery](docs/demo.gif)
 
 [![CI](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/iamnajib71/service-desk-agent/actions/workflows/ci.yml)
