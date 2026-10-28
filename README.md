@@ -15,7 +15,6 @@ I built a local support agent that investigates fictional office tickets, asks f
 | **Results** | [18/20 expected outcomes (90%), including safe escalations; 15/17 repair/read outcomes (88.2%)](eval/results/20261009T145821Z). [26 unit tests passed from the public clone](eval/results/clean-clone/github-verification.json). Failed scenarios remain published. |
 | **Skills shown** | Python, service desk automation, local LLMs, SQLite, API integration, approval workflows, recovery, test automation and evaluation. |
 | **Relevant roles** | Junior AI Engineer, AI Automation Developer, Application Support Analyst, Service Desk Analyst, QA Analyst. |
-| **How it was built** | Designed, specified and reviewed by me; built with Codex as my coding agent (vibe coding). Verification and its limits are linked below. |
 | **Try it / evidence** | [Hosted evidence replay](https://iamnajib71.github.io/service-desk-agent/) · [Quick start](#quick-start-on-windows) · [Evaluation protocol](docs/evaluation.md) · [Raw results](eval/results/) |
 
 ## What I did, step by step
