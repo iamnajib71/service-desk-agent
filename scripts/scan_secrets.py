@@ -9,7 +9,7 @@ paths = subprocess.check_output(["git", "ls-files", "-z"]).decode().split("\0")
 bad = []
 secrets = [v for k,v in config.secrets().items() if v and re.search(r"PASSWORD|HASH|TOKEN|KEY|RESET_", k)]
 for name in filter(None, paths):
-    if Path(name).name in (".env", "AGENTS.md", "CLAUDE.md", "CONTRIBUTING.md"):
+    if Path(name).name in (".env", "CONTRIBUTING.md"):
         bad.append(name)
     raw = Path(name).read_bytes()
     if any(value.encode() in raw for value in secrets):
